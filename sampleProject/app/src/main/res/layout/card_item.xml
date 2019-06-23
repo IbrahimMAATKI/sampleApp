@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+                name="cardModel"
+                type="com.sample.sampleapp.models.CardModel"/>
+
+        <variable
+                name="position"
+                type="Integer"/>
+
+        <import
+                alias="View"
+                type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@android:color/white"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <RelativeLayout
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:background="@color/colorLogoutGray">
+                    <ImageView
+                            android:id="@+id/row_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:imgRes="@{cardModel.appIconUrl}"/>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/_22ssp"
+                            android:text="@{cardModel.name}"
+                            tools:text="name"/>
+                    <TextView
+                            android:id="@+id/publisherName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_16ssp"
+                            android:text="@{cardModel.publisherName}"
+                            tools:text="publisherName"/>
+
+                    <TextView
+                            android:id="@+id/shortDesc"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_13ssp"
+                            android:text="@{cardModel.shortDesc}"
+                            tools:text="short description "/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

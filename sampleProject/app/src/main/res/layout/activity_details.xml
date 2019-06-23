@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+
+        <variable
+                name="details"
+                type="com.sample.sampleapp.models.FullDetailsModel"/>
+
+        <variable
+                name="detailsVM"
+                type="com.sample.sampleapp.viewModels.DetailsActivityVM"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".views.activities.DetailsActivity">
+
+        <RelativeLayout
+                android:id="@+id/feature_rl"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@color/colorLogoutGray">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_200sdp"
+                    app:auto_cycle="true"
+                    app:corner_radius="20"
+                    app:period="1000"
+                    app:delay="0"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+                android:id="@+id/icon_rl"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                app:layout_constraintTop_toBottomOf="@+id/feature_rl"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/colorLogoutGray">
+            <ImageView
+                    android:id="@+id/icon_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:imgRes="@{details.appFeaturedUrl}"
+            />
+        </RelativeLayout>
+        <LinearLayout
+                app:layout_constraintTop_toTopOf="@+id/icon_rl"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toEndOf="@+id/icon_rl"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_22ssp"
+                    android:text="@{details.name}"
+                    tools:text="name"/>
+            <TextView
+                    android:id="@+id/publisherName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_16ssp"
+                    android:text="@{details.publisherName}"
+                    tools:text="publisherName"/>
+
+            <TextView
+                    android:id="@+id/shortDesc"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="@{details.shortDesc}"
+                    tools:text="short description "/>
+
+        </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/avg"
+                app:layout_constraintTop_toBottomOf="@+id/icon_rl"
+                app:layout_constraintStart_toStartOf="@+id/icon_rl"
+                app:layout_constraintEnd_toEndOf="@+id/icon_rl"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="4.1"
+                android:text="@{String.valueOf(details.averageRatings)}"
+                android:textSize="@dimen/_20ssp"/>
+
+
+        <TextView
+                android:id="@+id/downs"
+                app:layout_constraintTop_toBottomOf="@+id/icon_rl"
+                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_phone_download_symbol"
+                android:drawableStart="@drawable/ic_phone_download_symbol"
+                tools:text="4.1"
+                android:text="@{String.valueOf(details.totalDownloads)}"
+                android:textSize="@dimen/_20ssp"/>
+
+        <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/avg"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/icon_rl"
+                app:layout_constraintEnd_toEndOf="@+id/icon_rl"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:rating="@{details.averageRatings}"
+                android:isIndicator="true"/>
+
+        <TextView
+                android:id="@+id/longDesc"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                app:layout_constraintStart_toStartOf="@+id/icon_rl"
+                app:layout_constraintEnd_toEndOf="@+id/icon_rl"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="4.1"
+                android:text="@{details.longDesc}"
+                android:textSize="@dimen/_20ssp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
